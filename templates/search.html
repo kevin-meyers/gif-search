@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<div class='results'>
+	{% for url, dims in gif_urls %}
+		<img src='{{ url }}', width='{{ dims[0] }}', height='{{ dims[1] }}'>
+	{% endfor %}
+
+{% endblock %}

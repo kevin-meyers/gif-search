@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GIF Search</title>
+        <link href='{{ url_for('static', filename='css/main.css') }}' rel='stylesheet'>
+
+	</head>
+	<body>
+		<form action='{{ url_for("search") }}' method='POST'>	
+			<small>Enter a keyword or phrase to search!</small>
+			<input type='text' name='query' required>
+			
+			<input type='submit'>
+		</form>
+
+		<div class='container'>
+			{% block container %}{% endblock %}
+		</div>
+
+	</body>
+
+</html>
