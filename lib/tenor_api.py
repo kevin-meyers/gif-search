@@ -19,3 +19,5 @@ def search(query):
 		return gifs_json
 	
 	return None
+
+# TODO: Make trending request
