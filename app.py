@@ -8,16 +8,28 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-	return render_template('base.html')
+    return render_template('base.html')
 
 
 @app.route('/search', methods=['POST'])
 def search():
-	gifs_json = tenor_api.search(request.form.get('query'))
-	gif_urls = [
-		(
-			result['media'][0]['gif']['url'], 
-			result['media'][0]['gif']['dims']
-		) for result in gifs_json['results']
-]
-	return render_template('search.html', gif_urls=gif_urls)
+    gifs_json = tenor_api.search(request.form.get('query'))
+    gif_urls = [
+      (
+       result['media'][0]['gif']['url'],
+       result['media'][0]['gif']['dims']
+       ) for result in gifs_json['results']
+    ]
+    return render_template('search.html', gif_urls=gif_urls)
+
+
+@app.route('/trending')
+def trending():
+    gifs_json = tenor_api.search_trending()
+    gif_urls = [
+      (
+       result['media'][0]['gif']['url'],
+       result['media'][0]['gif']['dims']
+       ) for result in gifs_json['results']
+    ]
+    return render_template('search.html', gif_urls=gif_urls)

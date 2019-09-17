@@ -6,11 +6,15 @@
 
 	</head>
 	<body>
-		<form action='{{ url_for("search") }}' method='POST'>	
+		<form action='{{ url_for("search") }}' method='POST'>
 			<small>Enter a keyword or phrase to search!</small>
 			<input type='text' name='query' required>
-			
+
 			<input type='submit'>
+		</form>
+
+		<form action='{{ url_for("trending") }}'>
+			<button type='submit' name='trending' >Trending</button>
 		</form>
 
 		<div class='container'>
