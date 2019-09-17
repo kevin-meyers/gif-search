@@ -25,7 +25,7 @@ def search():
 
 @app.route('/trending')
 def trending():
-    gifs_json = tenor_api.searchTrending()
+    gifs_json = tenor_api.search_trending()
     gif_urls = [
       (
        result['media'][0]['gif']['url'],

@@ -20,10 +20,8 @@ def search(query):
 
     return None
 
-# TODO: Make trending request
 
-
-def searchTrending():
+def search_trending():
     r = requests.get(
         'https://api.tenor.com/v1/trending?key=%s&limit=%s' % (
             API_KEY,
@@ -34,4 +32,5 @@ def searchTrending():
     if r.status_code == 200:
         gif_json = json.loads(r.content)
         return gif_json
+
     return None
