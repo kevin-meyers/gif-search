@@ -34,3 +34,18 @@ def search_trending():
         return gif_json
 
     return None
+
+
+def rand_search():
+    r = requests.get(
+        'https://api.tenor.com/v1/random?key=%s&limit=%s&q="Random"' % (
+            API_KEY,
+            SEARCH_LIMIT
+        )
+    )
+
+    if r.status_code == 200:
+        gif_json = json.loads(r.content)
+        return gif_json
+
+    return None

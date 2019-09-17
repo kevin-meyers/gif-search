@@ -8,7 +8,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('base.html')
+    gifs_json = tenor_api.rand_search()
+    gif_urls = [
+      (
+       result['media'][0]['gif']['url'],
+       result['media'][0]['gif']['dims']
+       ) for result in gifs_json['results']
+    ]
+    return render_template('search.html', gif_urls=gif_urls)
 
 
 @app.route('/search', methods=['POST'])
