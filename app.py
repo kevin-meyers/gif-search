@@ -21,12 +21,17 @@ def home():
 @app.route('/search', methods=['POST'])
 def search():
     gifs_json = tenor_api.search(request.form.get('query'))
+
     gif_urls = [
       (
        result['media'][0]['gif']['url'],
        result['media'][0]['gif']['dims']
        ) for result in gifs_json['results']
     ]
+
+    if gifs_json is None or len(gif_urls) == 0:
+        return render_template('error.html', str="No Gifs found.")
+
     return render_template('search.html', gif_urls=gif_urls)
 
 
